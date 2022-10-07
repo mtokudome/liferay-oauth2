@@ -6,8 +6,11 @@ function App() {
   return (
     <div>
 
-      <Users />
+     <Authorize />
 
+     <Token />
+
+     <Users />
 
 
     </div>
