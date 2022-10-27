@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 import Authorize from './components/Authorize';
 import Token from './components/Token';

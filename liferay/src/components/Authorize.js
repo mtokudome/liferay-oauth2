@@ -1,3 +1,5 @@
+import {clientId} from '../utils/config';
+
 function Authorize({handleCode}) {
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -6,7 +8,7 @@ function Authorize({handleCode}) {
     event.preventDefault();
 
     try {
-       window.location.replace('http://localhost:8080/o/oauth2/authorize?response_type=code&client_id=id-252408fa-51ab-d8b5-0872-a7183222c6');
+       window.location.replace('http://localhost:8080/o/oauth2/authorize?response_type=code&client_id=' + clientId);
     } catch (e) {
       throw new Error(e);
     }

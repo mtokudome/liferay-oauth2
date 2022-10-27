@@ -1,25 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import { useState } from 'react';
 
 import {getUsers} from '../utils/Requests';
 
-function Users() {
-	const [objects, setObjects] = useState([]);
+function Users({token}) {
+	const [users, setUsers] = useState([]);
 
-	const get = () => {
-		getUsers()
+	const handleGetUsers = async () => {
+		const data = await getUsers(token.access_token)
 			.then(response => response.json())
-			.then(data => setObjects(data.items));
+			.then(data => setUsers(data.items));
 	};
-
-	useEffect(() => {
-		get();
-	}, []);
 
 	return (
 		<div>
 			<h2>List of Users</h2>
 
-			{objects.map(items => (
+			<button onClick={handleGetUsers} >Get Users</button>
+
+			{users.map(items => (
 				<div key={items.id}>
 					{items.givenName} {items.familyName} {items.emailAddress}
 				</div>
