@@ -1,17 +1,29 @@
-import Authorize from './Authorize';
-import Token from './Token';
-import Users from './Users';
+import { useState } from 'react';
+
+import Authorize from './components/Authorize';
+import Token from './components/Token';
+import Users from './components/Users';
 
 function App() {
+  const [code, setCode] = useState('');
+  const [token, setToken] = useState({});
+
+  function handleCode(code) {
+    setCode(code);
+  }
+
+  function handleToken(token) {
+    setToken(token)
+  }
+
   return (
     <div>
 
-     <Authorize />
+     <Authorize handleCode={handleCode} />
 
-     <Token />
+     <Token handleToken={handleToken} code={code} />
 
-     <Users />
-
+     <Users token={token} />
 
     </div>
   );

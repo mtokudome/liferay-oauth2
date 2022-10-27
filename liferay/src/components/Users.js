@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {getUsers} from './utils/Requests';
+import {getUsers} from '../utils/Requests';
 
 function Users() {
 	const [objects, setObjects] = useState([]);
