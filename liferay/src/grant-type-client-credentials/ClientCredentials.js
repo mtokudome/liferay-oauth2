@@ -9,7 +9,6 @@ function ClientCredentials() {
 
 	function handleToken(token) {
 		setToken(token)
-		console.log(token.access_token)
 	}
 
 	return (
