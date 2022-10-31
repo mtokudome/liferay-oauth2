@@ -1,4 +1,4 @@
-import { getAuthToken } from "../utils/Requests";
+import { getAuthToken } from '../utils/Requests';
 
 export function Token({ handleToken }) {
   async function handleGetToken() {

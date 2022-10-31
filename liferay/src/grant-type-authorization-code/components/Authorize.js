@@ -1,4 +1,4 @@
-import { clientId } from "../utils/config";
+import { clientId } from '../utils/config';
 
 function Authorize({ handleCode }) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -8,7 +8,7 @@ function Authorize({ handleCode }) {
 
     try {
       window.location.replace(
-        "http://localhost:8080/o/oauth2/authorize?response_type=code&client_id=" +
+        'http://localhost:8080/o/oauth2/authorize?response_type=code&client_id=' +
           clientId
       );
     } catch (e) {
@@ -16,7 +16,7 @@ function Authorize({ handleCode }) {
     }
   }
 
-  const codeParams = urlParams.get("code");
+  const codeParams = urlParams.get('code');
 
   function getCode() {
     if (codeParams) {
