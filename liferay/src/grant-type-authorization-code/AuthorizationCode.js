@@ -1,12 +1,11 @@
-import React from 'react';
-import {useState} from 'react';
+import React, { useState } from "react";
 
-import Authorize from './components/Authorize';
-import Token from './components/Token';
-import Users from './components/Users';
+import Authorize from "./components/Authorize";
+import Token from "./components/Token";
+import Users from "./components/Users";
 
 function AuthorizationCode() {
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const [token, setToken] = useState({});
 
   function handleCode(code) {
@@ -14,18 +13,17 @@ function AuthorizationCode() {
   }
 
   function handleToken(token) {
-    setToken(token)
+    setToken(token);
   }
 
   return (
     <div>
-		<h1>Authorization Code Flow</h1>
-     <Authorize handleCode={handleCode} />
+      <h1>Authorization Code Flow</h1>
+      <Authorize handleCode={handleCode} />
 
-     <Token handleToken={handleToken} code={code} />
+      <Token handleToken={handleToken} code={code} />
 
-     <Users token={token} />
-
+      <Users token={token} />
     </div>
   );
 }
