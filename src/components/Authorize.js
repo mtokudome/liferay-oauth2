@@ -37,7 +37,9 @@ function Authorize({handleCode}) {
 				style={{width: "400px"}}
 				type='text'
 				value={authUrl}
-			/><br />
+			/>
+			(e.g. http://localhost:8080/o/oauth2/authorize)
+			<br />
 			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
@@ -48,10 +50,14 @@ function Authorize({handleCode}) {
 
 			<form onSubmit={handleAuthorize}>
 				<button type='onSubmit'>Authorize</button>
-			</form>
+			</form><br />
+
+			<br />
 			<button onClick={getCode} disabled={!codeParams}>
-				Get Authorization Code
-			</button>
+				Copy Authorization Code
+			</button><br />
+			Authorization code: {codeParams}
+
 		</div>
 	);
 }

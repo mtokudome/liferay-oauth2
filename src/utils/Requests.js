@@ -15,7 +15,7 @@ export const getAuthToken = async (props) => {
 	}
 	formBody = formBody.join('&');
 
-	const data = await fetch(`http://localhost:8080/o/oauth2/token`, {
+	const data = await fetch(props.tokenUrl, {
 		body: formBody,
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',

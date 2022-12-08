@@ -4,15 +4,18 @@ import {getAuthToken} from '../utils/Requests';
 export function Token({handleToken, code}) {
 	const [clientId, setClientId] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
+	const [token, setToken] = useState('');
+	const [tokenUrl, setTokenUrl] = useState('');
 
 	async function handleGetToken() {
 		const props = {
 			clientId: clientId,
 			clientSecret: clientSecret,
 			code: code,
+			tokenUrl: tokenUrl,
 		}
 		const token = await getAuthToken(props);
-		handleToken(token);
+		handleToken(token)
 	}
 
 	return (
@@ -33,8 +36,19 @@ export function Token({handleToken, code}) {
 				type='text'
 				value={clientSecret}
 			/><br />
+			<input
+				onChange={client => setTokenUrl(client.target.value)}
+				placeholder='Liferay Token URL'
+				style={{width: "400px"}}
+				type='text'
+				value={tokenUrl}
+			/>
+			(e.g. http://localhost:8080/o/oauth2/token)
+			<br />
 
 			<button onClick={handleGetToken}>Get Token</button>
+			<br />
+
 		</div>
 	);
 }
