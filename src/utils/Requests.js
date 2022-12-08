@@ -2,7 +2,7 @@ export const getAuthToken = async (props) => {
 	const request = {
 		client_id: props.clientId,
 		client_secret: props.clientSecret,
-		code: props.authCode,
+		code: props.code,
 		grant_type: 'authorization_code',
 		redirect_uri: 'http://localhost:3000',
 	};

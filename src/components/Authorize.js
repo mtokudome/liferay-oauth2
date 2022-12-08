@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function Authorize() {
+function Authorize({handleCode}) {
 	const [authUrl, setAuthUrl] = useState('');
 	const [clientId, setClientId] = useState('');
 	const urlParams = new URLSearchParams(window.location.search);
@@ -20,6 +20,12 @@ function Authorize() {
 	}
 
 	const codeParams = urlParams.get('code');
+
+	function getCode() {
+		if (codeParams) {
+			handleCode(codeParams);
+		}
+	}
 
 	return (
 		<div>
@@ -46,7 +52,12 @@ function Authorize() {
 				<button type='onSubmit'>Authorize</button>
 			</form><br />
 
-			Authorization code: {codeParams}
+			Authorization code: {codeParams}<br />
+			<br />
+
+			<button onClick={getCode} disabled={!codeParams}>
+				Copy Authorization Code
+			</button>
 
 		</div>
 	);

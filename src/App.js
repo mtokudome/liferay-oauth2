@@ -5,7 +5,12 @@ import Token from './components/Token';
 import User from './components/User';
 
 function App() {
+	const [code, setCode] = useState('');
 	const [token, setToken] = useState({});
+
+	function handleCode(code) {
+		setCode(code);
+	}
 
 	function handleToken(token) {
 		setToken(token);
@@ -18,9 +23,9 @@ function App() {
 			<br />
 			Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)
 
-			<Authorize />
+			<Authorize handleCode={handleCode} />
 
-			<Token handleToken={handleToken} />
+			<Token handleToken={handleToken} code={code} />
 			<br />
 			Authorization token: {token.access_token}
 
