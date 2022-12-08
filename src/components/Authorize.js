@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function Authorize({handleCode}) {
+function Authorize() {
 	const [authUrl, setAuthUrl] = useState('');
 	const [clientId, setClientId] = useState('');
 	const urlParams = new URLSearchParams(window.location.search);
@@ -20,12 +20,6 @@ function Authorize({handleCode}) {
 	}
 
 	const codeParams = urlParams.get('code');
-
-	function getCode() {
-		if (codeParams) {
-			handleCode(codeParams);
-		}
-	}
 
 	return (
 		<div>
