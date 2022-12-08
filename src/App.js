@@ -25,7 +25,9 @@ function App() {
 
 			<Authorize handleCode={handleCode} />
 
-			<Token handleToken={handleToken} code={code} />
+			<Token handleToken={handleToken} />
+			<br />
+			Authorization token: {token.access_token}
 
 			<User token={token} />
 		</div>

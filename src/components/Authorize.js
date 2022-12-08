@@ -52,10 +52,6 @@ function Authorize({handleCode}) {
 				<button type='onSubmit'>Authorize</button>
 			</form><br />
 
-			<br />
-			<button onClick={getCode} disabled={!codeParams}>
-				Copy Authorization Code
-			</button><br />
 			Authorization code: {codeParams}
 
 		</div>

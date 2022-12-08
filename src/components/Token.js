@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import {getAuthToken} from '../utils/Requests';
 
-export function Token({handleToken, code}) {
+export function Token({handleToken}) {
+	const [authCode, setAuthCode] = useState('');
 	const [clientId, setClientId] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
-	const [token, setToken] = useState('');
 	const [tokenUrl, setTokenUrl] = useState('');
 
 	async function handleGetToken() {
 		const props = {
+			authCode: authCode,
 			clientId: clientId,
 			clientSecret: clientSecret,
-			code: code,
 			tokenUrl: tokenUrl,
 		}
 		const token = await getAuthToken(props);
@@ -22,6 +22,13 @@ export function Token({handleToken, code}) {
 		<div className='Token'>
 			<h2>Get Token</h2>
 
+			<input
+				onChange={client => setAuthCode(client.target.value)}
+				placeholder='Authorization code'
+				style={{width: "500px"}}
+				type='text'
+				value={authCode}
+			/><br />
 			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
@@ -47,7 +54,6 @@ export function Token({handleToken, code}) {
 			<br />
 
 			<button onClick={handleGetToken}>Get Token</button>
-			<br />
 
 		</div>
 	);
