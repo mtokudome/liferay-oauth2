@@ -32,21 +32,21 @@ export function Token({handleToken}) {
 			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={clientId}
 			/><br />
 			<input
 				onChange={client => setClientSecret(client.target.value)}
 				placeholder='Client Secret'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={clientSecret}
 			/><br />
 			<input
 				onChange={client => setTokenUrl(client.target.value)}
 				placeholder='Liferay Token URL'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={tokenUrl}
 			/>

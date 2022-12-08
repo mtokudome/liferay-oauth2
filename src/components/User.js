@@ -24,7 +24,7 @@ function User({token}) {
 			<input
 				onChange={client => setUrl(client.target.value)}
 				placeholder='URL for get-current-user'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={url}
 			/><br />

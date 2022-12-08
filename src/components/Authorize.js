@@ -28,7 +28,7 @@ function Authorize() {
 			<input
 				onChange={client => setAuthUrl(client.target.value)}
 				placeholder='Liferay Authorize URL'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={authUrl}
 			/>
@@ -37,7 +37,7 @@ function Authorize() {
 			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
-				style={{width: "400px"}}
+				style={{width: "500px"}}
 				type='text'
 				value={clientId}
 			/><br />
