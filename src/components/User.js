@@ -15,7 +15,7 @@ function User({token}) {
 	const props = {
 		token: token.access_token,
 		url: url,
-	}
+	};
 
 	return (
 		<div>
@@ -24,17 +24,15 @@ function User({token}) {
 			<input
 				onChange={client => setUrl(client.target.value)}
 				placeholder='URL for get-current-user'
-				style={{width: "500px"}}
+				style={{width: '500px'}}
 				type='text'
 				value={url}
-			/><br />
+			/>
+			<br />
 
 			<button onClick={handleGetUser}>Get User</button>
 
-			<pre>{
-			JSON.stringify(user, null, 2)
-			}</pre>
-
+			<pre>{JSON.stringify(user, null, 2)}</pre>
 		</div>
 	);
 }

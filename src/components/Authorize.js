@@ -10,8 +10,7 @@ function Authorize({handleCode}) {
 
 		try {
 			window.location.replace(
-				authUrl + '?response_type=code&client_id=' +
-					clientId
+				authUrl + '?response_type=code&client_id=' + clientId
 			);
 		}
 		catch (e) {
@@ -30,11 +29,10 @@ function Authorize({handleCode}) {
 	return (
 		<div>
 			<h2>Authorize</h2>
-
 			<input
 				onChange={client => setAuthUrl(client.target.value)}
 				placeholder='Liferay Authorize URL'
-				style={{width: "500px"}}
+				style={{width: '500px'}}
 				type='text'
 				value={authUrl}
 			/>
@@ -43,22 +41,21 @@ function Authorize({handleCode}) {
 			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
-				style={{width: "500px"}}
+				style={{width: '500px'}}
 				type='text'
 				value={clientId}
-			/><br />
-
+			/>
+			<br />
 			<form onSubmit={handleAuthorize}>
 				<button type='onSubmit'>Authorize</button>
-			</form><br />
-
-			Authorization code: {codeParams}<br />
+			</form>
 			<br />
-
+			Authorization code: {codeParams}
+			<br />
+			<br />
 			<button onClick={getCode} disabled={!codeParams}>
 				Copy Authorization Code
 			</button>
-
 		</div>
 	);
 }

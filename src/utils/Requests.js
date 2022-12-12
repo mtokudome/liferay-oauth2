@@ -1,4 +1,4 @@
-export const getAuthToken = async (props) => {
+export const getAuthToken = async props => {
 	const request = {
 		client_id: props.clientId,
 		client_secret: props.clientSecret,
@@ -26,15 +26,12 @@ export const getAuthToken = async (props) => {
 	return data;
 };
 
-export const getUser = async (props) => {
-	return fetch(
-		props.url,
-		{
-			headers: {
-				'Authorization': 'Bearer ' + props.token,
-				'Content-Type': 'application/json',
-			},
-			method: 'GET',
-		}
-	);
+export const getUser = async props => {
+	return fetch(props.url, {
+		headers: {
+			Authorization: 'Bearer ' + props.token,
+			'Content-Type': 'application/json',
+		},
+		method: 'GET',
+	});
 };
