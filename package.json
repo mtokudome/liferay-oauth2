@@ -1,5 +1,6 @@
 {
   "name": "liferay-oauth2",
+  "homepage":"liferay-oauth2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
