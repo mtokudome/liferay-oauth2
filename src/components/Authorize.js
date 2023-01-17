@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function Authorize({handleCode}) {
-	const [authUrl, setAuthUrl] = useState('');
-	const [clientId, setClientId] = useState('');
+	const [authUrl, setAuthUrl] = React.useState('');
+	const [clientId, setClientId] = React.useState('');
+
 	const urlParams = new URLSearchParams(window.location.search);
 
 	function handleAuthorize(event) {
@@ -13,8 +14,8 @@ function Authorize({handleCode}) {
 				authUrl + '?response_type=code&client_id=' + clientId
 			);
 		}
-		catch (e) {
-			throw new Error(e);
+		catch (error) {
+			throw new Error(error);
 		}
 	}
 
@@ -29,30 +30,41 @@ function Authorize({handleCode}) {
 	return (
 		<div>
 			<h2>Authorize</h2>
+
 			<input
-				onChange={client => setAuthUrl(client.target.value)}
-				placeholder='Liferay Authorize URL'
-				style={{width: '500px'}}
-				type='text'
+				onChange={(event) => setAuthUrl(event.target.value)}
+				placeholder="Liferay Authorize URL"
+				style={{width: 500}}
+				type="text"
 				value={authUrl}
 			/>
+
 			(e.g. http://localhost:8080/o/oauth2/authorize)
+
 			<br />
+
 			<input
-				onChange={client => setClientId(client.target.value)}
-				placeholder='Client ID'
-				style={{width: '500px'}}
-				type='text'
+				onChange={(event) => setClientId(event.target.value)}
+				placeholder="Client ID"
+				style={{width: 500}}
+				type="text"
 				value={clientId}
 			/>
+
 			<br />
+
 			<form onSubmit={handleAuthorize}>
-				<button type='onSubmit'>Authorize</button>
+				<button type="onSubmit">Authorize</button>
 			</form>
+
 			<br />
+
 			Authorization code: {codeParams}
+
 			<br />
+
 			<br />
+
 			<button onClick={getCode} disabled={!codeParams}>
 				Copy Authorization Code
 			</button>

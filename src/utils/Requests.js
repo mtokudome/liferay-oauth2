@@ -1,4 +1,4 @@
-export const getAuthToken = async props => {
+export async function getAuthToken(props) {
 	const request = {
 		client_id: props.clientId,
 		client_secret: props.clientSecret,
@@ -8,11 +8,14 @@ export const getAuthToken = async props => {
 	};
 
 	let formBody = [];
-	for (let property in request) {
-		var encodedKey = encodeURIComponent(property);
-		var encodedValue = encodeURIComponent(request[property]);
+
+	for (const property in request) {
+		const encodedKey = encodeURIComponent(property);
+		const encodedValue = encodeURIComponent(request[property]);
+
 		formBody.push(encodedKey + '=' + encodedValue);
 	}
+
 	formBody = formBody.join('&');
 
 	const data = await fetch(props.tokenUrl, {
@@ -21,15 +24,15 @@ export const getAuthToken = async props => {
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		method: 'POST',
-	}).then(response => response.json());
+	}).then((response) => response.json());
 
 	return data;
 };
 
-export const getUser = async props => {
+export async function getUser(props) {
 	return fetch(props.url, {
 		headers: {
-			Authorization: 'Bearer ' + props.token,
+			'Authorization': 'Bearer ' + props.token,
 			'Content-Type': 'application/json',
 		},
 		method: 'GET',
