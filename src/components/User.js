@@ -28,6 +28,7 @@ function User({token}) {
 				type='text'
 				value={url}
 			/>
+			(e.g. http://localhost:8080/api/jsonws/user/get-current-user)
 			<br />
 
 			<button onClick={handleGetUser}>Get User</button>
