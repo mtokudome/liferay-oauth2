@@ -1,10 +1,8 @@
 import React from 'react';
 
-function Authorize({handleCode}) {
+function Authorize() {
 	const [authUrl, setAuthUrl] = React.useState('');
 	const [clientId, setClientId] = React.useState('');
-
-	const urlParams = new URLSearchParams(window.location.search);
 
 	function handleAuthorize(event) {
 		event.preventDefault();
@@ -16,14 +14,6 @@ function Authorize({handleCode}) {
 		}
 		catch (error) {
 			throw new Error(error);
-		}
-	}
-
-	const codeParams = urlParams.get('code');
-
-	function getCode() {
-		if (codeParams) {
-			handleCode(codeParams);
 		}
 	}
 
@@ -39,7 +29,9 @@ function Authorize({handleCode}) {
 				value={authUrl}
 			/>
 
-			(e.g. http://localhost:8080/o/oauth2/authorize)
+			{
+				'(e.g. http://localhost:8080/o/oauth2/authorize)'
+			}
 
 			<br />
 
@@ -59,15 +51,11 @@ function Authorize({handleCode}) {
 
 			<br />
 
-			Authorization code: {codeParams}
+			Authorization code:
 
-			<br />
-
-			<br />
-
-			<button onClick={getCode} disabled={!codeParams}>
-				Copy Authorization Code
-			</button>
+			{
+				new URLSearchParams(window.location.search).get('code')
+			}
 		</div>
 	);
 }

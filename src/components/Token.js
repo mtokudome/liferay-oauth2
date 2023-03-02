@@ -2,17 +2,21 @@ import React from 'react';
 
 import {getAuthToken} from '../utils/Requests';
 
-export function Token({code, handleToken}) {
+export function Token({handleToken}) {
 	const [clientId, setClientId] = React.useState('');
 	const [clientSecret, setClientSecret] = React.useState('');
 	const [tokenUrl, setTokenUrl] = React.useState('');
 
+	const urlSearchParams = new URLSearchParams(window.location.search);
+
 	async function handleGetToken() {
+		const code = urlSearchParams.get('code');
+
 		const token = await getAuthToken({
 			clientId,
 			clientSecret,
 			code,
-			tokenUrl,
+			tokenUrl
 		});
 
 		handleToken(token);
