@@ -7,8 +7,6 @@ import User from './User';
 function AuthorizationCodeFlow() {
 	const [token, setToken] = useState({});
 
-	const urlParams = new URLSearchParams(window.location.search);
-
 	function handleToken(token) {
 		setToken(token);
 	}
@@ -24,7 +22,6 @@ function AuthorizationCodeFlow() {
 			<Authorize />
 			<Token
 				handleToken={handleToken}
-				requestCode={urlParams.get('code')}
 				requestGrantType='authorization_code'
 				requestRedirectUriPath='/authorization-code-flow'
 			/>

@@ -4,7 +4,9 @@ export const getAuthToken = async props => {
 		client_secret: props.requestClientSecret,
 		code: props.requestCode,
 		grant_type: props.requestGrantType,
-		redirect_uri: props.requestRedirectUri
+		password: props.requestUserPassword,
+		redirect_uri: props.requestRedirectUri,
+		username: props.requestUserName
 	};
 
 	let formBody = [];
