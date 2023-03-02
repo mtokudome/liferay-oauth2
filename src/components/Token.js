@@ -21,6 +21,15 @@ export function Token({handleToken, code}) {
 		<div className='Token'>
 			<h2>Get Token</h2>
 			<input
+				onChange={client => setTokenUrl(client.target.value)}
+				placeholder='Liferay Token URL'
+				style={{width: '500px'}}
+				type='text'
+				value={tokenUrl}
+			/>
+			(e.g. http://localhost:8080/o/oauth2/token)
+			<br />
+			<input
 				onChange={client => setClientId(client.target.value)}
 				placeholder='Client ID'
 				style={{width: '500px'}}
@@ -35,15 +44,6 @@ export function Token({handleToken, code}) {
 				type='text'
 				value={clientSecret}
 			/>
-			<br />
-			<input
-				onChange={client => setTokenUrl(client.target.value)}
-				placeholder='Liferay Token URL'
-				style={{width: '500px'}}
-				type='text'
-				value={tokenUrl}
-			/>
-			(e.g. http://localhost:8080/o/oauth2/token)
 			<br />
 			<button onClick={handleGetToken}>Get Token</button>
 		</div>

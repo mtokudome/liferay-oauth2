@@ -4,7 +4,7 @@ export const getAuthToken = async props => {
 		client_secret: props.clientSecret,
 		code: props.code,
 		grant_type: 'authorization_code',
-		redirect_uri: 'http://localhost:3000',
+		redirect_uri: 'http://localhost:3000/authorization-code-flow'
 	};
 
 	let formBody = [];
