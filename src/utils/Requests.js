@@ -3,8 +3,8 @@ export async function getAuthToken(props) {
 		client_id: props.clientId,
 		client_secret: props.clientSecret,
 		code: props.code,
-		grant_type: 'authorization_code',
-		redirect_uri: 'http://localhost:3000',
+		grant_type: props.grantType,
+		redirect_uri: props.redirectUri
 	};
 
 	let formBody = [];

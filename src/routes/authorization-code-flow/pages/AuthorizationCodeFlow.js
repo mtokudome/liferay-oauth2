@@ -8,6 +8,12 @@ function AuthorizationCodeFlow() {
 	const [code, setCode] = React.useState('');
 	const [token, setToken] = React.useState({});
 
+	var redirectUri = window.location.href;
+
+	if (redirectUri.lastIndexOf("?") > 0) {
+		redirectUri = redirectUri.slice(0, redirectUri.lastIndexOf("?"));
+	}
+
 	return (
 		<div>
 			<h1>Authorization Code Flow</h1>
@@ -24,7 +30,7 @@ function AuthorizationCodeFlow() {
 
 			<Authorize handleCode={setCode} />
 
-			<Token handleToken={setToken} code={code} />
+			<Token handleToken={setToken} grantType={'authorization_code'} redirectUri={redirectUri} />
 
 			<br />
 
