@@ -5,12 +5,9 @@ import Token from './Token';
 import User from './User';
 
 function AuthorizationCodeFlow() {
-	const [code, setCode] = useState({});
 	const [token, setToken] = useState({});
 
-	function handleCode(code) {
-		setCode(code);
-	}
+	const urlParams = new URLSearchParams(window.location.search);
 
 	function handleToken(token) {
 		setToken(token);
@@ -24,8 +21,13 @@ function AuthorizationCodeFlow() {
 			<br />
 			Scope: read your personal user data
 			(liferay-json-web-services.everything.read.userprofile)
-			<Authorize handleCode={handleCode} />
-			<Token handleToken={handleToken} code={code} />
+			<Authorize />
+			<Token
+				handleToken={handleToken}
+				requestCode={urlParams.get('code')}
+				requestGrantType='authorization_code'
+				requestRedirectUriPath='/authorization-code-flow'
+			/>
 			<br />
 			Authorization token: {token.access_token}
 			<User token={token} />

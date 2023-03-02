@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import {getAuthToken} from '../utils/Requests';
 
-export function Token({handleToken, code}) {
+export function Token({handleToken, requestCode, requestGrantType, requestRedirectUriPath}) {
 	const [clientId, setClientId] = useState('');
 	const [clientSecret, setClientSecret] = useState('');
 	const [tokenUrl, setTokenUrl] = useState('');
 
 	async function handleGetToken() {
 		const props = {
-			clientId: clientId,
-			clientSecret: clientSecret,
-			code: code,
+			requestClientId: clientId,
+			requestClientSecret: clientSecret,
+			requestCode: requestCode,
+			requestGrantType: requestGrantType,
+			requestRedirectUri: 'http://localhost:3000' + requestRedirectUriPath,
 			tokenUrl: tokenUrl,
 		};
 		const token = await getAuthToken(props);
