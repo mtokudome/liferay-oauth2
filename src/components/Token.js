@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getAuthToken} from '../utils/requests';
+import {getAuthToken} from '../utils/Requests';
 
 export function Token({code, handleToken}) {
 	const [clientId, setClientId] = React.useState('');

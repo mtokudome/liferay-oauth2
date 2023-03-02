@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getUser} from '../utils/requests';
+import {getUser} from '../utils/Requests';
 
 function User({token}) {
 	const [url, setUrl] = React.useState('');
