@@ -29,6 +29,20 @@ export function Token({handleToken, grantType, redirectUri}) {
 			<h2>Get Token</h2>
 
 			<input
+				onChange={(event) => setTokenUrl(event.target.value)}
+				placeholder="Liferay Token URL"
+				style={{width: 500}}
+				type="text"
+				value={tokenUrl}
+			/>
+
+			{
+				'(e.g. http://localhost:8080/o/oauth2/token)'
+			}
+
+			<br />
+
+			<input
 				onChange={(event) => setClientId(event.target.value)}
 				placeholder="Client ID"
 				style={{width: 500}}
@@ -45,20 +59,6 @@ export function Token({handleToken, grantType, redirectUri}) {
 				type="text"
 				value={clientSecret}
 			/>
-
-			<br />
-
-			<input
-				onChange={(event) => setTokenUrl(event.target.value)}
-				placeholder="Liferay Token URL"
-				style={{width: 500}}
-				type="text"
-				value={tokenUrl}
-			/>
-
-			{
-				'(e.g. http://localhost:8080/o/oauth2/token)'
-			}
 
 			<br />
 
