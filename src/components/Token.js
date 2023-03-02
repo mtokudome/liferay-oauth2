@@ -50,7 +50,9 @@ export function Token({code, handleToken}) {
 				value={tokenUrl}
 			/>
 
-			(e.g. http://localhost:8080/o/oauth2/token)
+			{
+				'(e.g. http://localhost:8080/o/oauth2/token)'
+			}
 
 			<br />
 
