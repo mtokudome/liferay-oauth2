@@ -6,6 +6,8 @@ export function Token({handleToken, grantType, redirectUri}) {
 	const [clientId, setClientId] = React.useState('');
 	const [clientSecret, setClientSecret] = React.useState('');
 	const [tokenUrl, setTokenUrl] = React.useState('');
+	const [userName, setUserName] = React.useState('');
+	const [userPassword, setUserPassword] = React.useState('');
 
 	async function handleGetToken() {
 		const urlSearchParams = new URLSearchParams(window.location.search);
@@ -18,7 +20,9 @@ export function Token({handleToken, grantType, redirectUri}) {
 			code,
 			grantType,
 			redirectUri,
-			tokenUrl
+			tokenUrl,
+			userName,
+			userPassword
 		});
 
 		handleToken(token);
@@ -61,6 +65,34 @@ export function Token({handleToken, grantType, redirectUri}) {
 			/>
 
 			<br />
+
+			{
+				grantType == 'password'
+
+				&&
+
+				<div>
+					<input
+						onChange={client => setUserName(client.target.value)}
+						placeholder='User Name'
+						style={{width: '500px'}}
+						type='text'
+						value={userName}
+					/>
+
+					<br />
+
+					<input
+						onChange={client => setUserPassword(client.target.value)}
+						placeholder='User Password'
+						style={{width: '500px'}}
+						type='text'
+						value={userPassword}
+					/>
+
+					<br />
+				</div>
+			}
 
 			<button onClick={handleGetToken}>Get Token</button>
 		</div>
