@@ -44,6 +44,7 @@ export function Token({grantType, handleToken, redirectUri}) {
 				type="text"
 				value={tokenUrl}
 			/>
+
 			(e.g. http://localhost:8080/o/oauth2/token)
 			<br />
 
@@ -72,7 +73,7 @@ export function Token({grantType, handleToken, redirectUri}) {
 					<input
 						onChange={(client) => setUserName(client.target.value)}
 						placeholder="User Name"
-						style={{width: '500px'}}
+						style={{width: 500}}
 						type="text"
 						value={userName}
 					/>
@@ -84,7 +85,7 @@ export function Token({grantType, handleToken, redirectUri}) {
 							setUserPassword(client.target.value)
 						}
 						placeholder="User Password"
-						style={{width: '500px'}}
+						style={{width: 500}}
 						type="text"
 						value={userPassword}
 					/>

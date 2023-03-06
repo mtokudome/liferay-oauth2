@@ -2,15 +2,24 @@
  * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
  * SPDX-License-Identifier: MIT
  */
-export async function getAuthToken(props) {
+export async function getAuthToken({
+	clientId,
+	clientSecret,
+	code,
+	grantType,
+	redirectUri,
+	tokenUrl,
+	userName,
+	userPassword,
+}) {
 	const request = {
-		client_id: props.clientId,
-		client_secret: props.clientSecret,
-		code: props.code,
-		grant_type: props.grantType,
-		password: props.userPassword,
-		redirect_uri: props.redirectUri,
-		username: props.userName,
+		client_id: clientId,
+		client_secret: clientSecret,
+		code,
+		grant_type: grantType,
+		password: userPassword,
+		redirect_uri: redirectUri,
+		username: userName,
 	};
 
 	let formBody = [];
@@ -24,7 +33,7 @@ export async function getAuthToken(props) {
 
 	formBody = formBody.join('&');
 
-	const data = await fetch(props.tokenUrl, {
+	const data = await fetch(tokenUrl, {
 		body: formBody,
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
@@ -35,10 +44,10 @@ export async function getAuthToken(props) {
 	return data;
 }
 
-export async function getUser(props) {
-	return fetch(props.url, {
+export async function getUser({token, url}) {
+	return fetch(url, {
 		headers: {
-			'Authorization': 'Bearer ' + props.token,
+			'Authorization': 'Bearer ' + token,
 			'Content-Type': 'application/json',
 		},
 		method: 'GET',

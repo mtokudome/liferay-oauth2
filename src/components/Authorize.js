@@ -33,6 +33,7 @@ function Authorize() {
 				type="text"
 				value={authUrl}
 			/>
+
 			(e.g. http://localhost:8080/o/oauth2/authorize)
 			<br />
 
@@ -51,7 +52,9 @@ function Authorize() {
 			</form>
 
 			<br />
-			Authorization code:
+
+			{'Authorization code:'}
+
 			{new URLSearchParams(window.location.search).get('code')}
 		</div>
 	);
