@@ -23,7 +23,11 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"format": "yarn liferay-npm-scripts format --experimental-standalone && yarn liferay-npm-scripts lint:fix --experimental-standalone"
 	},
-	"version": "0.1.0"
+	"version": "0.1.0",
+	"devDependencies": {
+		"@liferay/npm-scripts": "^47.16.0"
+	}
 }
