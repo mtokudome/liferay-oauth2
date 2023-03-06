@@ -1,3 +1,7 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
 export async function getAuthToken(props) {
 	const request = {
 		client_id: props.clientId,
@@ -6,7 +10,7 @@ export async function getAuthToken(props) {
 		grant_type: props.grantType,
 		password: props.userPassword,
 		redirect_uri: props.redirectUri,
-		username: props.userName
+		username: props.userName,
 	};
 
 	let formBody = [];
@@ -29,7 +33,7 @@ export async function getAuthToken(props) {
 	}).then((response) => response.json());
 
 	return data;
-};
+}
 
 export async function getUser(props) {
 	return fetch(props.url, {
@@ -39,4 +43,4 @@ export async function getUser(props) {
 		},
 		method: 'GET',
 	});
-};
+}

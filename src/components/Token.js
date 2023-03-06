@@ -1,8 +1,13 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 import {getAuthToken} from '../utils/Requests';
 
-export function Token({handleToken, grantType, redirectUri}) {
+export function Token({grantType, handleToken, redirectUri}) {
 	const [clientId, setClientId] = React.useState('');
 	const [clientSecret, setClientSecret] = React.useState('');
 	const [tokenUrl, setTokenUrl] = React.useState('');
@@ -22,7 +27,7 @@ export function Token({handleToken, grantType, redirectUri}) {
 			redirectUri,
 			tokenUrl,
 			userName,
-			userPassword
+			userPassword,
 		});
 
 		handleToken(token);
@@ -39,11 +44,7 @@ export function Token({handleToken, grantType, redirectUri}) {
 				type="text"
 				value={tokenUrl}
 			/>
-
-			{
-				'(e.g. http://localhost:8080/o/oauth2/token)'
-			}
-
+			(e.g. http://localhost:8080/o/oauth2/token)
 			<br />
 
 			<input
@@ -66,33 +67,31 @@ export function Token({handleToken, grantType, redirectUri}) {
 
 			<br />
 
-			{
-				grantType == 'password'
-
-				&&
-
+			{grantType === 'password' && (
 				<div>
 					<input
-						onChange={client => setUserName(client.target.value)}
-						placeholder='User Name'
+						onChange={(client) => setUserName(client.target.value)}
+						placeholder="User Name"
 						style={{width: '500px'}}
-						type='text'
+						type="text"
 						value={userName}
 					/>
 
 					<br />
 
 					<input
-						onChange={client => setUserPassword(client.target.value)}
-						placeholder='User Password'
+						onChange={(client) =>
+							setUserPassword(client.target.value)
+						}
+						placeholder="User Password"
 						style={{width: '500px'}}
-						type='text'
+						type="text"
 						value={userPassword}
 					/>
 
 					<br />
 				</div>
-			}
+			)}
 
 			<button onClick={handleGetToken}>Get Token</button>
 		</div>

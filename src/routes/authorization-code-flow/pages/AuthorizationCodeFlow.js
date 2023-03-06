@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 import Authorize from '../../../components/Authorize';
@@ -5,32 +10,29 @@ import Token from '../../../components/Token';
 import User from '../../../components/User';
 
 function AuthorizationCodeFlow() {
-	const [code, setCode] = React.useState('');
 	const [token, setToken] = React.useState({});
 
-	var redirectUri = window.location.href;
+	let redirectUri = window.location.href;
 
-	if (redirectUri.lastIndexOf("?") > 0) {
-		redirectUri = redirectUri.slice(0, redirectUri.lastIndexOf("?"));
+	if (redirectUri.lastIndexOf('?') > 0) {
+		redirectUri = redirectUri.slice(0, redirectUri.lastIndexOf('?'));
 	}
 
 	return (
 		<div>
 			<h1>Authorization Code Flow</h1>
-
-			{
-				'Callback URI: http://localhost:3000/authorization-code-flow (or wherever the React app is running)'
-			}
-
+			Callback URI: http://localhost:3000/authorization-code-flow (or
+			wherever the React app is running)
 			<br />
+			Scope: read your personal user data
+			(liferay-json-web-services.everything.read.userprofile)
+			<Authorize />
 
-			{
-				'Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)'
-			}
-
-			<Authorize handleCode={setCode} />
-
-			<Token handleToken={setToken} grantType={'authorization_code'} redirectUri={redirectUri} />
+			<Token
+				grantType="authorization_code"
+				handleToken={setToken}
+				redirectUri={redirectUri}
+			/>
 
 			<br />
 

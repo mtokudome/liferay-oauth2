@@ -1,6 +1,10 @@
-import React from 'react';
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
 
-import {BrowserRouter, Link, Routes, Route} from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
 
 import AuthorizationCodeFlow from './routes/authorization-code-flow/pages/AuthorizationCodeFlow';
 import ClientCredentialsFlow from './routes/client-credentials-flow/pages/ClientCredentialsFlow';
@@ -9,24 +13,44 @@ import ResourceOwnerPasswordCredentialsFlow from './routes/resource-owner-passwo
 function App() {
 	return (
 		<BrowserRouter>
-			<div className='App'>
+			<div className="App">
 				<nav>
 					<ul>
 						<li>
-							<Link to='/authorization-code-flow'>Authorization Code Flow</Link>
+							<Link to="/authorization-code-flow">
+								Authorization Code Flow
+							</Link>
 						</li>
+
 						<li>
-							<Link to='/client-credentials-flow'>Client Credentials Flow</Link>
+							<Link to="/client-credentials-flow">
+								Client Credentials Flow
+							</Link>
 						</li>
+
 						<li>
-							<Link to='/resource-owner-password-credentials-flow'>Resource Owner Password Credentials Flow</Link>
+							<Link to="/resource-owner-password-credentials-flow">
+								Resource Owner Password Credentials Flow
+							</Link>
 						</li>
 					</ul>
 				</nav>
+
 				<Routes>
-					<Route path='/authorization-code-flow' element={<AuthorizationCodeFlow />} />
-					<Route path='/client-credentials-flow' element={<ClientCredentialsFlow />} />
-					<Route path='/resource-owner-password-credentials-flow' element={<ResourceOwnerPasswordCredentialsFlow />} />
+					<Route
+						element={<AuthorizationCodeFlow />}
+						path="/authorization-code-flow"
+					/>
+
+					<Route
+						element={<ClientCredentialsFlow />}
+						path="/client-credentials-flow"
+					/>
+
+					<Route
+						element={<ResourceOwnerPasswordCredentialsFlow />}
+						path="/resource-owner-password-credentials-flow"
+					/>
 				</Routes>
 			</div>
 		</BrowserRouter>

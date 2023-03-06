@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 import {getUser} from '../utils/Requests';
@@ -26,11 +31,7 @@ function User({token}) {
 				type="text"
 				value={url}
 			/>
-
-			{
-				'(e.g. http://localhost:8080/api/jsonws/user/get-current-user)'
-			}
-
+			(e.g. http://localhost:8080/api/jsonws/user/get-current-user)
 			<br />
 
 			<button onClick={handleGetUser}>Get User</button>

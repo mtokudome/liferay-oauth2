@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 import Token from '../../../components/Token';
@@ -9,12 +14,9 @@ function ResourceOwnerPasswordCredentialsFlow() {
 	return (
 		<div>
 			<h1>Resource Owner Password Credentials Flow</h1>
-
-			{
-				'Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)'
-			}
-
-			<Token handleToken={setToken} grantType={'password'} />
+			Scope: read your personal user data
+			(liferay-json-web-services.everything.read.userprofile)
+			<Token grantType="password" handleToken={setToken} />
 
 			<br />
 

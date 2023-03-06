@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 function Authorize() {
@@ -28,11 +33,7 @@ function Authorize() {
 				type="text"
 				value={authUrl}
 			/>
-
-			{
-				'(e.g. http://localhost:8080/o/oauth2/authorize)'
-			}
-
+			(e.g. http://localhost:8080/o/oauth2/authorize)
 			<br />
 
 			<input
@@ -50,12 +51,8 @@ function Authorize() {
 			</form>
 
 			<br />
-
 			Authorization code:
-
-			{
-				new URLSearchParams(window.location.search).get('code')
-			}
+			{new URLSearchParams(window.location.search).get('code')}
 		</div>
 	);
 }
