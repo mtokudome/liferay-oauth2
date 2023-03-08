@@ -44,7 +44,6 @@ export function Token({grantType, handleToken, redirectUri}) {
 				type="text"
 				value={tokenUrl}
 			/>
-
 			(e.g. http://localhost:8080/o/oauth2/token)
 			<br />
 

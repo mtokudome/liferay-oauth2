@@ -5,12 +5,23 @@
 
 const path = require('path');
 
+let config = {};
+
+try {
+	config = require('@liferay/npm-scripts/src/config/eslint.config');
+}
+catch (error) {
+	throw new Error(
+		'@liferay/npm-scripts is not installed.'
+	);
+}
+
 module.exports = {
-	env: {
-		node: true,
+	...config,
+	globals: {
+		...config.globals,
+		MODULE_PATH: true,
 	},
-	extends: ['plugin:@liferay/general'],
-	plugins: ['@liferay'],
 	rules: {
 		'@liferay/portal/no-global-fetch': 'off',
 		'@liferay/portal/no-localhost-reference': 'off',

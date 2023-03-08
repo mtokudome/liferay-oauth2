@@ -33,7 +33,6 @@ function Authorize() {
 				type="text"
 				value={authUrl}
 			/>
-
 			(e.g. http://localhost:8080/o/oauth2/authorize)
 			<br />
 

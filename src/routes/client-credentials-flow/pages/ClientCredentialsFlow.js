@@ -14,8 +14,8 @@ function ClientCredentialsFlow() {
 	return (
 		<div>
 			<h1>Client Credentials Flow</h1>
-
-			Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)
+			Scope: read your personal user data
+			(liferay-json-web-services.everything.read.userprofile)
 			<Token grantType="client_credentials" handleToken={setToken} />
 
 			<br />

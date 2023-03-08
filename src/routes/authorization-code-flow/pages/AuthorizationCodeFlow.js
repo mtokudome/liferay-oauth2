@@ -21,11 +21,11 @@ function AuthorizationCodeFlow() {
 	return (
 		<div>
 			<h1>Authorization Code Flow</h1>
-
-			Callback URI: http://localhost:3000/authorization-code-flow (or wherever the React app is running)
+			Callback URI: http://localhost:3000/authorization-code-flow (or
+			wherever the React app is running)
 			<br />
-
-			Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)
+			Scope: read your personal user data
+			(liferay-json-web-services.everything.read.userprofile)
 			<Authorize />
 
 			<Token

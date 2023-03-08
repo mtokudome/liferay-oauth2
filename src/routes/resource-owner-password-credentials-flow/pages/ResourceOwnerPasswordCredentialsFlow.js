@@ -14,8 +14,8 @@ function ResourceOwnerPasswordCredentialsFlow() {
 	return (
 		<div>
 			<h1>Resource Owner Password Credentials Flow</h1>
-
-			Scope: read your personal user data (liferay-json-web-services.everything.read.userprofile)
+			Scope: read your personal user data
+			(liferay-json-web-services.everything.read.userprofile)
 			<Token grantType="password" handleToken={setToken} />
 
 			<br />
