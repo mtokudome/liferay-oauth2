@@ -1,35 +1,59 @@
-import React, {useState} from 'react';
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
 
-import Authorize from './components/Authorize';
-import Token from './components/Token';
-import User from './components/User';
+import React from 'react';
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+
+import AuthorizationCodeFlow from './routes/authorization-code-flow/pages/AuthorizationCodeFlow';
+import ClientCredentialsFlow from './routes/client-credentials-flow/pages/ClientCredentialsFlow';
+import ResourceOwnerPasswordCredentialsFlow from './routes/resource-owner-password-credentials-flow/pages/ResourceOwnerPasswordCredentialsFlow';
 
 function App() {
-	const [code, setCode] = useState('');
-	const [token, setToken] = useState({});
-
-	function handleCode(code) {
-		setCode(code);
-	}
-
-	function handleToken(token) {
-		setToken(token);
-	}
-
 	return (
-		<div>
-			<h1>Authorization Code Flow</h1>
-			Callback URI: http://localhost:3000 (or wherever the React app is
-			running)
-			<br />
-			Scope: read your personal user data
-			(liferay-json-web-services.everything.read.userprofile)
-			<Authorize handleCode={handleCode} />
-			<Token handleToken={handleToken} code={code} />
-			<br />
-			Authorization token: {token.access_token}
-			<User token={token} />
-		</div>
+		<BrowserRouter>
+			<div className="App">
+				<nav>
+					<ul>
+						<li>
+							<Link to="/authorization-code-flow">
+								Authorization Code Flow
+							</Link>
+						</li>
+
+						<li>
+							<Link to="/client-credentials-flow">
+								Client Credentials Flow
+							</Link>
+						</li>
+
+						<li>
+							<Link to="/resource-owner-password-credentials-flow">
+								Resource Owner Password Credentials Flow
+							</Link>
+						</li>
+					</ul>
+				</nav>
+
+				<Routes>
+					<Route
+						element={<AuthorizationCodeFlow />}
+						path="/authorization-code-flow"
+					/>
+
+					<Route
+						element={<ClientCredentialsFlow />}
+						path="/client-credentials-flow"
+					/>
+
+					<Route
+						element={<ResourceOwnerPasswordCredentialsFlow />}
+						path="/resource-owner-password-credentials-flow"
+					/>
+				</Routes>
+			</div>
+		</BrowserRouter>
 	);
 }
 

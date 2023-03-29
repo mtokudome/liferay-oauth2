@@ -1,37 +1,55 @@
-export const getAuthToken = async props => {
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
+export async function getAuthToken({
+	clientId,
+	clientSecret,
+	code,
+	grantType,
+	redirectUri,
+	tokenUrl,
+	userName,
+	userPassword,
+}) {
 	const request = {
-		client_id: props.clientId,
-		client_secret: props.clientSecret,
-		code: props.code,
-		grant_type: 'authorization_code',
-		redirect_uri: 'http://localhost:3000',
+		client_id: clientId,
+		client_secret: clientSecret,
+		code,
+		grant_type: grantType,
+		password: userPassword,
+		redirect_uri: redirectUri,
+		username: userName,
 	};
 
 	let formBody = [];
-	for (let property in request) {
-		var encodedKey = encodeURIComponent(property);
-		var encodedValue = encodeURIComponent(request[property]);
+
+	for (const property in request) {
+		const encodedKey = encodeURIComponent(property);
+		const encodedValue = encodeURIComponent(request[property]);
+
 		formBody.push(encodedKey + '=' + encodedValue);
 	}
+
 	formBody = formBody.join('&');
 
-	const data = await fetch(props.tokenUrl, {
+	const data = await fetch(tokenUrl, {
 		body: formBody,
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
 		method: 'POST',
-	}).then(response => response.json());
+	}).then((response) => response.json());
 
 	return data;
-};
+}
 
-export const getUser = async props => {
-	return fetch(props.url, {
+export async function getUser({token, url}) {
+	return fetch(url, {
 		headers: {
-			Authorization: 'Bearer ' + props.token,
+			'Authorization': 'Bearer ' + token,
 			'Content-Type': 'application/json',
 		},
 		method: 'GET',
 	});
-};
+}

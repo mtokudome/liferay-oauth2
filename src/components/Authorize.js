@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+/**
+ * SPDX-FileCopyrightText: © 2020 Liferay, Inc. <https://liferay.com>
+ * SPDX-License-Identifier: MIT
+ */
 
-function Authorize({handleCode}) {
-	const [authUrl, setAuthUrl] = useState('');
-	const [clientId, setClientId] = useState('');
-	const urlParams = new URLSearchParams(window.location.search);
+import React from 'react';
+
+function Authorize() {
+	const [authUrl, setAuthUrl] = React.useState('');
+	const [clientId, setClientId] = React.useState('');
 
 	function handleAuthorize(event) {
 		event.preventDefault();
@@ -13,49 +17,44 @@ function Authorize({handleCode}) {
 				authUrl + '?response_type=code&client_id=' + clientId
 			);
 		}
-		catch (e) {
-			throw new Error(e);
-		}
-	}
-
-	const codeParams = urlParams.get('code');
-
-	function getCode() {
-		if (codeParams) {
-			handleCode(codeParams);
+		catch (error) {
+			throw new Error(error);
 		}
 	}
 
 	return (
 		<div>
 			<h2>Authorize</h2>
+
 			<input
-				onChange={client => setAuthUrl(client.target.value)}
-				placeholder='Liferay Authorize URL'
-				style={{width: '500px'}}
-				type='text'
+				onChange={(event) => setAuthUrl(event.target.value)}
+				placeholder="Liferay Authorize URL"
+				style={{width: 500}}
+				type="text"
 				value={authUrl}
 			/>
 			(e.g. http://localhost:8080/o/oauth2/authorize)
 			<br />
+
 			<input
-				onChange={client => setClientId(client.target.value)}
-				placeholder='Client ID'
-				style={{width: '500px'}}
-				type='text'
+				onChange={(event) => setClientId(event.target.value)}
+				placeholder="Client ID"
+				style={{width: 500}}
+				type="text"
 				value={clientId}
 			/>
+
 			<br />
+
 			<form onSubmit={handleAuthorize}>
-				<button type='onSubmit'>Authorize</button>
+				<button type="onSubmit">Authorize</button>
 			</form>
+
 			<br />
-			Authorization code: {codeParams}
-			<br />
-			<br />
-			<button onClick={getCode} disabled={!codeParams}>
-				Copy Authorization Code
-			</button>
+
+			{'Authorization code:'}
+
+			{new URLSearchParams(window.location.search).get('code')}
 		</div>
 	);
 }
